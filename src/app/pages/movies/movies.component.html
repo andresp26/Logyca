@@ -1,0 +1,89 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+    <h2 class="text-uppercase mt-2 ">Peliculas</h2>
+    <hr class="bg-primary">
+    <div class="row">
+        <div class="col-4">
+            <div id="firsrcard" *ngIf="profile == 'Administrador'" class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    Crear Pelicula
+                </div>
+                <div class="card-body">
+                    <form class="col-10" [formGroup]="form" novalidate>
+                        <div class="form-group">
+                            <label>Titulo</label>
+                            <input type="text" formControlName="titulo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Descripcion</label>
+                            <textarea type="text" formControlName="descripcion" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Director</label>
+                            <input type="text" formControlName="director" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Actores</label>
+                            <input type="text" formControlName="actores" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Costo Alquiler</label>
+                            <input type="number" formControlName="costo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad</label>
+                            <input type="number" formControlName="cantidad" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" *ngIf="!edit" (click)="insert()">Guardar</button>
+                            <button class="btn btn-primary btn-block" *ngIf="edit" (click)="update()">Editar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5" [className]="profile == 'Administrador' ? 'col-8' : 'col-auto'">
+            <div class="card shadow m-auto">
+                <div class="card-header bg-primary text-white">
+                    Peliculas
+                </div>
+                <div class="card-body">
+                    <div class="col-3 form-group">
+                        <input type="text" [(ngModel)]="listFilter" class="form-control" id="filterInput" placeholder="Filtro">
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>Titulo</td>
+                                <td>Descripcion</td>
+                                <td>Actores</td>
+                                <td>Director</td>
+                                <td>Costo Alquiler</td>
+                                <td>Cantidad</td>
+                                <td colspan="2" *ngIf="profile == 'Administrador'">Actions</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let peli of filtermovies">
+                                <td>{{ peli.titulo }}</td>
+                                <td>{{ peli.descripcion }}</td>
+                                <td>{{ peli.actores }}</td>
+                                <td>{{ peli.director }}</td>
+                                <td>{{ peli.costo_alquiler }}</td>
+                                <td>{{ peli.cantidad }}</td>
+                                <td><a (click)="updateform(peli.id)" title="Editar" *ngIf="profile == 'Administrador'" class="btn btn-primary text-white"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a></td>
+                                <td><a (click)="reserveMovie(peli.id)" title="Reservar!"   class="btn btn-success text-white"><i  class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </a></td>
+                                <td><a (click)="delete(peli.id)" title="Eliminar" *ngIf="profile == 'Administrador'" class="btn btn-danger text-white"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

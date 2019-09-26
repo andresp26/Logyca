@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #17a2b8;
+    
+  }
+
+  #login {
+    background-image: url(../../../assets/cinema-2502213_1920.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 750px;
+  }
+
+  #login .container #login-row #login-column #login-box {
+    margin-top: 10rem;
+    max-width: 600px;
+    height: 21rem;    
+    background:    dodgerblue;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }
+
+ #iconuser {     
+    padding: 10px;
+
+    background:    dodgerblue;
+    
+    color:    white;
+    
+    min-width: 50px;
+    
+    text-align: center;
+    
+    font-size: 64px;
+    
+    width: 100%;
+    
+    margin-bottom: 15px;         
+ }

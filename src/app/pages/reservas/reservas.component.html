@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="card shadow mt-2">
+                <div class="card-header bg-primary text-white">
+                    Mis Reservas
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>Titulo</td>                                
+                                <td>Costo Alquiler</td>                                
+                                <td colspan="2">Eliminar Reserva</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let peli of movies">
+                                <td>{{ peli.titulo }}</td>
+                                <td>{{ peli.costo_alquiler }}</td>                                
+                                <td><a  (click)="removeReserve(peli.id)"
+                                        class="btn btn-danger text-white"><i class="fa fa-trash-o"
+                                            aria-hidden="true"></i>
+                                    </a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
